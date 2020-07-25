@@ -64,6 +64,7 @@ public class SampleAtmosphereApplication {
 
 		@Override
 		public void addViewControllers(ViewControllerRegistry registry) {
+			// http://localhost:8081/home/home.html
 			registry.addViewController("/").setViewName("forward:/home/home.html");
 		}
 
@@ -78,6 +79,7 @@ public class SampleAtmosphereApplication {
 		}
 
 	}
+	
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(SampleAtmosphereApplication.class, args);

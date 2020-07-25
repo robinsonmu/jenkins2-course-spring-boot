@@ -1,0 +1,11 @@
+version: "3"
+services:
+  server_1:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: apache_server_1
+    ports:
+      - 5000:${APACHE_EXPOSED_PORT}
+    expose:
+      - ${APACHE_EXPOSED_PORT}
