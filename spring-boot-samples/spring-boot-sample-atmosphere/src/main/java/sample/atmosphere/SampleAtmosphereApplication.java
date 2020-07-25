@@ -34,10 +34,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.boot.web.support.SpringBootServletInitializer;  
+import org.springframework.boot.builder.SpringApplicationBuilder;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootConfiguration
 @EnableAutoConfiguration
-public class SampleAtmosphereApplication {
+public class SampleAtmosphereApplication extends  SpringBootServletInitializer {
 
 	@Bean
 	public EmbeddedAtmosphereInitializer atmosphereInitializer() {
@@ -85,4 +89,8 @@ public class SampleAtmosphereApplication {
 		SpringApplication.run(SampleAtmosphereApplication.class, args);
 	}
 
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(SampleAtmosphereApplication.class);
+    }
 }

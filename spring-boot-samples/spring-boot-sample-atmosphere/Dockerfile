@@ -1,13 +1,15 @@
-FROM tomcat:8.0-jre8
+FROM openjdk:8-jdk-alpine
 
 LABEL maintaner="Robinson Munoz"
-RUN ["rm", "-fr", "/usr/local/tomcat/webapps/ROOT"]
+RUN ["rm", "-fr", "/usr/local/tomcat/webapps/*"]
+ARG JAR_FILE=target/*.jar
 # COPY path-to-your-application-war path-to-webapps-in-docker-tomcat
-COPY ./target/spring-boot-sample-atmosphere-1.4.0.RELEASE.jar /usr/local/tomcat/webapps/
+COPY ${JAR_FILE} /app.jar
 
 EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app.jar"]
 
-CMD ["catalina.sh", "run"]
 
+# CMD ["java", "-jar", "/app.jar"]
 # docker build -t prueba .   
 #  docker run -p 5001:8080 --name java prueba
